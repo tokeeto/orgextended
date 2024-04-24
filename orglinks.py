@@ -218,14 +218,14 @@ class ImageHandler:
         height = -1
         node = db.Get().AtRegion(view,region)
         if(node):
-            attr = node.get_comment("ORG_ATTR",None)
+            attr = node.get_comment("ATTR_ORG",None)
             if(attr):
                 params = PList.createPList(attr)
                 try:
                     width = int(params.Get('width',-1))
                     height = int(params.Get('height',-1))
                 except:
-                    log.error("Could not extract width and height from plist / ORG_ATTR comment")
+                    log.error("Could not extract width and height from plist / ATTR_ORG comment")
         # If we already have this image then exit out
         if view.id() in ImageHandler.Phantoms and str(region) in ImageHandler.Phantoms[view.id()]:
             return
